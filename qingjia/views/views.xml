@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+   <!--打开请假单动作-->
+   <act_window id="action_qingjia_qingjd"
+               name="请假单"
+              res_model="qingjia.qingjd"
+              view_mode="tree,from" />
+   
+   <!--表单视图-->
+   <record id="qingjia_qingjd_form" model="ir.ui.view">
+      <field name="name" >qing jia dan form</field>
+      <field name="model" >qingjia.qingjd</field>
+      <field name="arch" type="xml" >
+         <form>
+            
+             <header>
+                <button name="send_qingjd" type="object" string="发送" class="oe_highlight" />
+                <button name="confirm_qingjd" type="object" string="确认" class="oe_highlight" />
+             </header>
+             
+             <sheet>
+               <group name="group_top" string="请假单" >
+                   <field name="name" />
+                   <field name="days" />
+                   <field name="startdate" />
+                   <field name="reason" />
+               </group>               
+             </sheet>
+             
+         </form>
+         
+      </field>
+   </record>
+   
+   <!--tree视图-->
+   <record id="action_qingjia_tree" model="ir.ui.view">
+      <field name="name" >qing jia dan tree</field>
+      <field name="model" >qingjia.qingjd</field>
+      <field name="arch" type="xml" >
+         <tree>
+             <field name="name" />
+             <field name="startdate" />
+             <field name="days" />
+         </tree>      
+      </field>
+   </record>     
+   <!--加入菜单视图-->
+   <menuitem id="menu_qingjia" name="请假" sequence="0"></menuitem>
+   <menuitem id="menu_qingjia_qingjiadan" name="请假单" parent="menu_qingjia"></menuitem>
+   <menuitem id="menu_qingjia_qingjiadan_qingjiadan" parent="menu_qingjia_qingjiadan"
+             action="action_qingjia_qingjd"></menuitem>
+</data>
+</openerp>
